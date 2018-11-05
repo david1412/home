@@ -1,19 +1,18 @@
 pipeline {
     agent any
         
-    
     stages {
         stage('Compile Stage') {
            
             steps {
-                withMaven(Maven : 'apachemaven-3.5.4') {
+                withMaven(Maven : 'maven-3.5.4') {
                 sh 'mvn clean compile'
                 }
             }
         }
         stage('Test') {
             steps {
-                withMaven(Maven : 'apachemaven-3.5.4'){
+                withMaven(Maven : 'maven-3.5.4'){
                 sh 'mvn test'
                 }
                 
@@ -23,7 +22,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                withMaven(Maven : 'apachemaven-3.5.4') {
+                withMaven(Maven : 'maven-3.5.4') {
                 sh 'mvn deploy'
                 }
             }
